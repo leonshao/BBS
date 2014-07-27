@@ -297,8 +297,18 @@ function uc_friend_ls($uid, $page = 1, $pagesize = 10, $totalnum = 10, $directio
 	return UC_CONNECT == 'mysql' ? $return : uc_unserialize($return);
 }
 
+function uc_user_register_realname($realname, $mobile, $regip = '') {
+	return call_user_func(UC_API_FUNC, 'user', 'register_realname', array('realname' => $realname, 'mobile' => $mobile, 'regip' => $regip));
+}
+
 function uc_user_register($username, $password, $email, $questionid = '', $answer = '', $regip = '') {
 	return call_user_func(UC_API_FUNC, 'user', 'register', array('username'=>$username, 'password'=>$password, 'email'=>$email, 'questionid'=>$questionid, 'answer'=>$answer, 'regip' => $regip));
+}
+
+function uc_user_login_realname($realname, $mobile, $isuid = 0) {
+	$isuid = intval($isuid);
+	$return = call_user_func(UC_API_FUNC, 'user', 'login_realname', array('realname'=>$realname, 'mobile'=>$mobile, 'isuid'=>$isuid));
+	return UC_CONNECT == 'mysql' ? $return : uc_unserialize($return);
 }
 
 function uc_user_login($username, $password, $isuid = 0, $checkques = 0, $questionid = '', $answer = '') {

@@ -27,7 +27,7 @@ class logging_ctl {
 		$js = '<script type="text/javascript">showWindow(\'login\', \'member.php?mod=logging&action=login&auth='.rawurlencode($auth).'&referer='.rawurlencode(dreferer()).(!empty($_GET['cookietime']) ? '&cookietime=1' : '').'\')</script>';
 		showmessage('location_login', '', array('type' => 1), array('extrajs' => $js));
 	}
-
+	
 	function on_login() {
 		global $_G;
 		if($_G['uid']) {
@@ -89,10 +89,14 @@ class logging_ctl {
 			}
 			$_G['uid'] = $_G['member']['uid'] = 0;
 			$_G['username'] = $_G['member']['username'] = $_G['member']['password'] = '';
-			if(!$_GET['password'] || $_GET['password'] != addslashes($_GET['password'])) {
+/* 			if(!$_GET['password'] || $_GET['password'] != addslashes($_GET['password'])) {
 				showmessage('profile_passwd_illegal');
+			} */
+			if(!$_GET['mobile'] || $_GET['mobile'] != addslashes($_GET['mobile'])) {
+				showmessage('profile_mobile_illegal');
 			}
-			$result = userlogin($_GET['username'], $_GET['password'], $_GET['questionid'], $_GET['answer'], $this->setting['autoidselect'] ? 'auto' : $_GET['loginfield'], $_G['clientip']);
+// 			$result = userlogin($_GET['username'], $_GET['password'], $_GET['questionid'], $_GET['answer'], $this->setting['autoidselect'] ? 'auto' : $_GET['loginfield'], $_G['clientip']);
+			$result = userlogin_realname($_GET['realname'], $_GET['mobile'], $_GET['loginfield'], $_G['clientip']);
 			$uid = $result['ucresult']['uid'];
 
 			if(!empty($_GET['lssubmit']) && ($result['ucresult']['uid'] == -3 || $seccodecheck)) {
@@ -120,7 +124,7 @@ class logging_ctl {
 					require_once $this->extrafile;
 				}
 
-				setloginstatus($result['member'], $_GET['cookietime'] ? 2592000 : 0);
+				setloginstatus($_GET['realname'], $result['member'], $_GET['cookietime'] ? 2592000 : 0);
 				checkfollowfeed();
 				if($_G['group']['forcelogin']) {
 					if($_G['group']['forcelogin'] == 1) {
@@ -281,7 +285,12 @@ class logging_ctl {
 						}
 					}
 				} else {
-					showmessage($loginmessage, $location, $param, $extra);
+					if ($_GET['json']) {
+						// 返回用户信息
+						member_profile_json($result['member']);
+					}
+					else
+						showmessage($loginmessage, $location, $param, $extra);
 				}
 			} else {
 				$password = preg_replace("/^(.{".round(strlen($_GET['password']) / 4)."})(.+?)(.{".round(strlen($_GET['password']) / 6)."})$/s", "\\1***\\3", $_GET['password']);
@@ -360,6 +369,12 @@ class register_ctl {
 		$_GET['password'] = $_GET[''.$this->setting['reginput']['password']];
 		$_GET['password2'] = $_GET[''.$this->setting['reginput']['password2']];
 		$_GET['email'] = $_GET[''.$this->setting['reginput']['email']];
+		
+		$realname 	= $_GET['realname'];
+		$mobile 	= $_GET['mobile'];
+		$college	= $_GET['field1'];
+		$profession	= $_GET['field2'];
+		$year		= $_GET['field3'];
 
 		if($_G['uid']) {
 			$ucsynlogin = $this->setting['allowsynlogin'] ? uc_user_synlogin($_G['uid']) : '';
@@ -530,9 +545,9 @@ class register_ctl {
 				}
 				$sendurl = false;
 			}
-			if(!$activationauth && ($sendurl || !$_G['setting']['forgeemail'])) {
+/* 			if(!$activationauth && ($sendurl || !$_G['setting']['forgeemail'])) {
 				checkemail($_GET['email']);
-			}
+			} */
 			if($sendurl) {
 				$hashstr = urlencode(authcode("$_GET[email]\t$_G[timestamp]", 'ENCODE', $_G['config']['security']['authkey']));
 				$registerurl = "{$_G[siteurl]}member.php?mod=".$this->setting['regname']."&amp;hash={$hashstr}&amp;email={$_GET[email]}";
@@ -572,24 +587,26 @@ class register_ctl {
 			}
 
 			if(!$activation) {
-				$usernamelen = dstrlen($username);
+/* 				$usernamelen = dstrlen($username);
 				if($usernamelen < 3) {
 					showmessage('profile_username_tooshort');
 				} elseif($usernamelen > 15) {
 					showmessage('profile_username_toolong');
-				}
-				if(uc_get_user(addslashes($username)) && !C::t('common_member')->fetch_uid_by_username($username) && !C::t('common_member_archive')->fetch_uid_by_username($username)) {
+				} */
+				
+				// TODO 需要验证实名的注删
+/* 				if(uc_get_user(addslashes($username)) && !C::t('common_member')->fetch_uid_by_username($username) && !C::t('common_member_archive')->fetch_uid_by_username($username)) {
 					if($_G['inajax']) {
 						showmessage('profile_username_duplicate');
 					} else {
 						showmessage('register_activation_message', 'member.php?mod=logging&action=login', array('username' => $username));
 					}
-				}
-				if($this->setting['pwlength']) {
+				} */
+/* 				if($this->setting['pwlength']) {
 					if(strlen($_GET['password']) < $this->setting['pwlength']) {
 						showmessage('profile_password_tooshort', '', array('pwlength' => $this->setting['pwlength']));
 					}
-				}
+				} */
 				if($this->setting['strongpw']) {
 					$strongpw_str = array();
 					if(in_array(1, $this->setting['strongpw']) && !preg_match("/\d+/", $_GET['password'])) {
@@ -617,9 +634,9 @@ class register_ctl {
 						showmessage('profile_passwd_notmatch');
 					}
 
-					if(!$_GET['password'] || $_GET['password'] != addslashes($_GET['password'])) {
+/* 					if(!$_GET['password'] || $_GET['password'] != addslashes($_GET['password'])) {
 						showmessage('profile_passwd_illegal');
-					}
+					} */
 					$password = $_GET['password'];
 				} else {
 					$password = md5(random(10));
@@ -699,7 +716,8 @@ class register_ctl {
 			}
 
 			if(!$activation) {
-				$uid = uc_user_register(addslashes($username), $password, $email, $questionid, $answer, $_G['clientip']);
+// 				$uid = uc_user_register(addslashes($username), $password, $email, $questionid, $answer, $_G['clientip']);
+				$uid = uc_user_register_realname(addslashes($realname), $mobile);
 				if($uid <= 0) {
 					if($uid == -1) {
 						showmessage('profile_username_illegal');
@@ -781,7 +799,7 @@ class register_ctl {
 
 			$init_arr = array('credits' => explode(',', $this->setting['initcredits']), 'profile'=>$profile, 'emailstatus' => $emailstatus);
 
-			C::t('common_member')->insert($uid, $username, $password, $email, $_G['clientip'], $groupinfo['groupid'], $init_arr);
+			C::t('common_member')->insert($uid, $realname, $mobile, $college, $profession, $year, $mobile, $password, $email, $_G['clientip'], $groupinfo['groupid'], $init_arr);
 			if($emailstatus) {
 				updatecreditbyaction('realemail', $uid);
 			}
@@ -826,11 +844,12 @@ class register_ctl {
 				manage_addnotify('verifyuser');
 			}
 
-			setloginstatus(array(
-				'uid' => $uid,
-				'username' => $_G['username'],
-				'password' => $password,
-				'groupid' => $groupinfo['groupid'],
+			setloginstatus($realname, 
+				array(
+					'uid' => $uid,
+					'username' => $_G['username'],
+					'password' => $password,
+					'groupid' => $groupinfo['groupid'],
 			), 0);
 			include_once libfile('function/stat');
 			updatestat('register');

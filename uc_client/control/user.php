@@ -60,7 +60,17 @@ class usercontrol extends base {
 		}
 		return '';
 	}
-
+	
+	function onregister_realname() {
+		$this->init_input();
+		$realname 	= $this->input('realname');
+		$mobile 	= $this->input('mobile');
+		$regip 		= $this->input('regip');
+		
+		$uid = $_ENV['user']->add_user_realname($realname, $mobile, 0, $regip);
+		return $uid;
+	}
+	
 	function onregister() {
 		$this->init_input();
 		$username = $this->input('username');
@@ -103,6 +113,24 @@ class usercontrol extends base {
 		return $status;
 	}
 
+	function onlogin_realname() {
+		$this->init_input();
+		$isuid = $this->input('isuid');
+		$realname = $this->input('realname');
+		$mobile = $this->input('mobile');
+		
+		$user = $_ENV['user']->get_user_by_realname($realname, $mobile);
+		if(empty($user)) {
+			$status = -1;
+		} elseif($user['mobile'] != $mobile) {
+			$status = -2;
+		} else {
+			$status = $user['uid'];
+		}
+		
+		return array($status, $user['realname'], $mobile);
+	}
+	
 	function onlogin() {
 		$this->init_input();
 		$isuid = $this->input('isuid');

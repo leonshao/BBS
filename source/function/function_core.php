@@ -5,6 +5,16 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_core.php 34528 2014-05-15 11:42:01Z nemohou $
+ *      
+ *      Date: 2014-07-14
+ *      Author: leonshao
+ *      Description: 
+ *      +-------------------+-------------------------------------------------------+
+ *      | function          | update                                                |
+ *      +-------------------+-------------------------------------------------------+
+ *      | getuserbyuid      | get user profile by uid to retrieve real name, append |
+ *      |                   | the profile to user basic data array.                 |
+ *      +-------------------+-------------------------------------------------------+
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -80,6 +90,9 @@ function getuserbyuid($uid, $fetch_archive = 0) {
 		if($fetch_archive === 1 && empty($users[$uid])) {
 			$users[$uid] = C::t('common_member_archive')->fetch($uid);
 		}
+		// 获取用户详细资料, 以便登录后展示真实姓名
+		$user_profile = C::t('common_member_profile')->fetch($uid);
+		$users[$uid] = $users[$uid] + $user_profile;
 	}
 	if(!isset($users[$uid]['self']) && $uid == getglobal('uid') && getglobal('uid')) {
 		$users[$uid]['self'] = 1;

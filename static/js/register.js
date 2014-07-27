@@ -33,6 +33,7 @@ function errormessage(id, msg) {
 function addFormEvent(formid, focus){
 	var si = 0;
 	var formNode = $(formid).getElementsByTagName('input');
+	var passwordNode1 = passwordNode2 = -1;
 	for(i = 0;i < formNode.length;i++) {
 		if(formNode[i].name == '') {
 			formNode[i].name = formNode[i].id;
@@ -43,15 +44,20 @@ function addFormEvent(formid, focus){
 			formNode[i].onfocus = function(){
 				showInputTip(!this.id ? this.name : this.id);
 			}
+			if(formNode[i].type == 'password') {
+				passwordNode1 < 0 ? passwordNode1 = i : passwordNode2 = i;
+			}
 		}
 	}
 	if(!si) {
 		return;
 	}
-	formNode[stmp[0]].onblur = function () {
-		checkusername(formNode[stmp[0]].id);
-	};
-	checkPwdComplexity(formNode[stmp[1]], formNode[stmp[2]]);
+	if(passwordNode1 != stmp[0]) {
+		formNode[stmp[0]].onblur = function() {
+			checkusername(formNode[stmp[0]].id);
+		};
+	}
+	checkPwdComplexity(formNode[passwordNode1], formNode[passwordNode2]);
 	try {
 		if(!ignoreEmail) {
 			addMailEvent(formNode[stmp[3]]);

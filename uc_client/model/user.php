@@ -5,6 +5,17 @@
 	This is NOT a freeware, use is subject to license terms
 
 	$Id: user.php 1078 2011-03-30 02:00:29Z monkey $
+	
+    Date: 2014-07-16
+    Author: leonshao
+    Description: 
+    +-------------------+-------------------------------------------------------+
+    | function          | update                                                |
+    +-------------------+-------------------------------------------------------+
+	| add_user_realname | add new function add_user_realname, assign mobile as  |
+	|                   | username to avoid checking while inserting new user   |
+	|                   | to table UC_DBTABLEPRE_members.                       |
+	+-------------------+-------------------------------------------------------+
 */
 
 !defined('IN_UC') && exit('Access Denied');
@@ -30,6 +41,11 @@ class usermodel {
 
 	function get_user_by_username($username) {
 		$arr = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE username='$username'");
+		return $arr;
+	}
+	
+	function get_user_by_realname($realname, $mobile) {
+		$arr = $this->db->fetch_first("SELECT * FROM ".UC_DBTABLEPRE."members WHERE realname='$realname' AND mobile='$mobile'");
 		return $arr;
 	}
 
@@ -126,6 +142,20 @@ class usermodel {
 		return $user['uid'];
 	}
 
+	function add_user_realname($realname, $mobile, $uid = 0, $regip = '') {
+		$regip = empty($regip) ? $this->base->onlineip : $regip;
+		$salt = substr(uniqid(rand()), -6);
+		
+		$sqladd = $uid ? "uid='".intval($uid)."'," : '';
+		
+		// 用手机号充当username, 保证该字段唯一性
+		$this->db->query("INSERT INTO ".UC_DBTABLEPRE."members SET $sqladd username ='$mobile', realname='$realname', mobile='$mobile', regip='$regip', regdate='".$this->base->time."', salt='$salt'");
+		$uid = $this->db->insert_id();	// 返回上一步 INSERT操作产生的 ID
+		$this->db->query("INSERT INTO ".UC_DBTABLEPRE."memberfields SET uid='$uid'");
+		
+		return $uid;
+	}
+	
 	function add_user($username, $password, $email, $uid = 0, $questionid = '', $answer = '', $regip = '') {
 		$regip = empty($regip) ? $this->base->onlineip : $regip;
 		$salt = substr(uniqid(rand()), -6);

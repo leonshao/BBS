@@ -1073,6 +1073,7 @@ $lang = array (
   'author_not_uploadpic' => '楼主暂时没有上传图片',
   'noreply_yourself_error' => '您不能对自己的回帖进行投票',
   'noreply_voted_error' => '您已经对此回帖投过票了',
+  'profile_mobile_illegal' => '抱歉，手机号码空或包含非法字符',
 );
 
 ?>

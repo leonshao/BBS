@@ -2,7 +2,7 @@
 /**
  *  Date: 2014-07-21
  *  Author: leonshao
- *  Description: 
+ *  Description: CGI to get secure code and image data by json format.
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -23,11 +23,10 @@ $callback = 'callback';
 $result = 0;
 
 $rand = random(5, 1);
-$data = array('onclick' => 'updateseccode(\''.$idhash.'\')', 
+$data = array('idhash'	=> $idhash,
 			  'width' 	=> sprintf('%d', $_G['setting']['seccodedata']['width']),
 			  'height'	=> sprintf('%d', $_G['setting']['seccodedata']['height']),
 			  'src'		=> 'misc.php?mod=seccode&update='.$rand.'&idhash='.$idhash,
-			  'class'	=> 'vm'
 			  );
 $arr = array('result' => $result, 'data_img' => $data);
 

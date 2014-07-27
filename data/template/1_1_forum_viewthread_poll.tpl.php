@@ -69,8 +69,8 @@ var p = 0;
 <?php } ?>
 <td class="pvt">
 <label for="option_<?php echo $key;?>"><?php echo $key;?>. &nbsp;<?php echo $option['polloption'];?>
-<?php if($expiration && $expirations < TIMESTAMP && !empty($option['optionprovider'])) { ?>
-&nbsp;--&nbsp;<?php echo $option['optionprovider'];?>
+<?php if($expiration && $expirations < TIMESTAMP && !empty($option['optionremark'])) { ?>
+&nbsp;--&nbsp;<?php echo $option['optionremark'];?>
 <?php } ?>
 </label>
 </td>

@@ -62,7 +62,7 @@ class extend_thread_trade extends extend_thread_base {
 			'fid' => $this->forum['fid'],
 			'tid' => $this->tid,
 			'first' => '0',
-			'author' => $this->member['username'],
+			'author' => $this->member['realname'],
 			'authorid' => $this->member['uid'],
 			'subject' => $this->param['subject'],
 			'dateline' => getglobal('timestamp'),

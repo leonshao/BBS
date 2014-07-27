@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('login');
 0
-|| checktplrefresh('./template/default/member/login.htm', './template/default/common/seccheck.htm', 1404401978, '1', './data/template/1_1_member_login.tpl.php', './template/default', 'member/login')
+|| checktplrefresh('./template/default/member/login.htm', './template/default/common/seccheck.htm', 1406450501, '1', './data/template/1_1_member_login.tpl.php', './template/default', 'member/login')
 ;?><?php include template('common/header'); $loginhash = 'L'.random(4);?><?php if(empty($_GET['infloat'])) { ?>
 <div id="ct" class="ptm wp w cl">
 <div class="nfl" id="main_succeed" style="display: none">
@@ -37,7 +37,7 @@
 <span><?php if(!empty($_GET['infloat']) && !isset($_GET['frommessage'])) { ?><a href="javascript:;" class="flbc" onclick="hideWindow('<?php echo $_GET['handlekey'];?>', 0, 1);" title="关闭">关闭</a><?php } ?></span>
 </h3>
 <?php if(!empty($_G['setting']['pluginhooks']['logging_top'])) echo $_G['setting']['pluginhooks']['logging_top'];?>
-<form method="post" autocomplete="off" name="login" id="loginform_<?php echo $loginhash;?>" class="cl" onsubmit="<?php if($this->setting['pwdsafety']) { ?>pwmd5('password3_<?php echo $loginhash;?>');<?php } ?>pwdclear = 1;ajaxpost('loginform_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes<?php if(!empty($_GET['handlekey'])) { ?>&amp;handlekey=<?php echo $_GET['handlekey'];?><?php } if(isset($_GET['frommessage'])) { ?>&amp;frommessage<?php } ?>&amp;loginhash=<?php echo $loginhash;?>">
+<form method="post" autocomplete="off" name="login" id="loginform_<?php echo $loginhash;?>" class="cl" onsubmit="<?php if($this->setting['pwdsafety']) { ?>pwmd5('password3_<?php echo $loginhash;?>');<?php } ?>pwdclear = 1;ajaxpost('loginform_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'returnmessage_<?php echo $loginhash;?>', 'onerror');return false;" action="member.php?mod=logging&amp;action=login&amp;loginsubmit=yes<?php if(!empty($_GET['handlekey'])) { ?>&amp;handlekey=<?php echo $_GET['handlekey'];?><?php } if(isset($_GET['frommessage'])) { ?>&amp;frommessage<?php } ?>&amp;loginhash=<?php echo $loginhash;?>&amp;json=1">
 <div class="c cl">
 <input type="hidden" name="formhash" value="<?php echo FORMHASH;?>" />
 <input type="hidden" name="referer" value="<?php echo dreferer(); ?>" />
@@ -56,20 +56,8 @@
 <div class="rfm">
 <table>
 <tr>
-<th>
-<?php if($this->setting['autoidselect']) { ?><label for="username_<?php echo $loginhash;?>">帐号:</label><?php } else { ?>
-<span class="login_slct">
-<select name="loginfield" style="float: left;" width="45" id="loginfield_<?php echo $loginhash;?>">
-<option value="username">用户名</option>
-<?php if(getglobal('setting/uidlogin')) { ?>
-<option value="uid">UID</option>
-<?php } ?>
-<option value="email">Email</option>
-</select>
-</span>
-<?php } ?>
-</th>
-<td><input type="text" name="username" id="username_<?php echo $loginhash;?>" autocomplete="off" size="30" class="px p_fre" tabindex="1" value="<?php echo $username;?>" /></td>
+<th><label for="realname_<?php echo $loginhash;?>">姓名:</label></th>
+<td><input type="text" name="realname" id="realname_<?php echo $loginhash;?>" autocomplete="off" size="30" class="px p_fre" tabindex="1" value="<?php echo $username;?>" /></td>
 <td class="tipcol"><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>"><?php echo $_G['setting']['reglinkname'];?></a></td>
 </tr>
 </table>
@@ -77,35 +65,8 @@
 <div class="rfm">
 <table>
 <tr>
-<th><label for="password3_<?php echo $loginhash;?>">密码:</label></th>
-<td><input type="password" id="password3_<?php echo $loginhash;?>" name="password" onfocus="clearpwd()" size="30" class="px p_fre" tabindex="1" /></td>
-<td class="tipcol"><a href="javascript:;" onclick="display('layer_login_<?php echo $loginhash;?>');display('layer_lostpw_<?php echo $loginhash;?>');" title="找回密码">找回密码</a></td>
-</tr>
-</table>
-</div>
-<?php } if(empty($_GET['auth']) || $questionexist) { ?>
-<div class="rfm">
-<table>
-<tr>
-<th>安全提问:</th>
-<td><select id="loginquestionid_<?php echo $loginhash;?>" width="213" name="questionid"<?php if(!$questionexist) { ?> onchange="if($('loginquestionid_<?php echo $loginhash;?>').value > 0) {$('loginanswer_row_<?php echo $loginhash;?>').style.display='';} else {$('loginanswer_row_<?php echo $loginhash;?>').style.display='none';}"<?php } ?>>
-<option value="0"><?php if($questionexist) { ?>安全提问<?php } else { ?>安全提问(未设置请忽略)<?php } ?></option>
-<option value="1">母亲的名字</option>
-<option value="2">爷爷的名字</option>
-<option value="3">父亲出生的城市</option>
-<option value="4">您其中一位老师的名字</option>
-<option value="5">您个人计算机的型号</option>
-<option value="6">您最喜欢的餐馆名称</option>
-<option value="7">驾驶执照最后四位数字</option>
-</select></td>
-</tr>
-</table>
-</div>
-<div class="rfm" id="loginanswer_row_<?php echo $loginhash;?>" <?php if(!$questionexist) { ?> style="display:none"<?php } ?>>
-<table>
-<tr>
-<th>答案:</th>
-<td><input type="text" name="answer" id="loginanswer_<?php echo $loginhash;?>" autocomplete="off" size="30" class="px p_fre" tabindex="1" /></td>
+<th><label for="mobile_<?php echo $loginhash;?>">手机:</label></th>
+<td><input id="mobile_<?php echo $loginhash;?>" name="mobile" onfocus="clearpwd()" size="30" class="px p_fre" tabindex="1" /></td>
 </tr>
 </table>
 </div>

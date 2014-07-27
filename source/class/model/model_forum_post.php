@@ -121,7 +121,7 @@ class model_forum_post extends discuz_model {
 			'fid' => $this->forum['fid'],
 			'tid' => $this->thread['tid'],
 			'first' => '0',
-			'author' => $this->member['username'],
+			'author' => $this->member['realname'],
 			'authorid' => $this->member['uid'],
 			'subject' => $this->param['subject'],
 			'dateline' => $this->param['timestamp'] ? $this->param['timestamp'] : getglobal('timestamp'),

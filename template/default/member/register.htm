@@ -118,7 +118,7 @@
 						<!--{/if}-->
 
 						<!--{if $_GET[action] != 'activation'}-->
-							<div class="rfm">
+<!--								<div class="rfm">
 								<table>
 									<tr>
 										<th><span class="rq">*</span><label for="{$this->setting['reginput']['username']}">{lang username}:</label></th>
@@ -126,37 +126,7 @@
 										<td class="tipcol"><i id="tip_{$this->setting['reginput']['username']}" class="p_tip">{lang register_username_tips}</i><kbd id="chk_{$this->setting['reginput']['username']}" class="p_chk"></kbd></td>
 									</tr>
 								</table>
-							</div>
-
-							<div class="rfm">
-								<table>
-									<tr>
-										<th><span class="rq">*</span><label for="{$this->setting['reginput']['password']}">{lang password}:</label></th>
-										<td><input type="password" id="{$this->setting['reginput']['password']}" name="" size="25" tabindex="1" class="px" required /></td>
-										<td class="tipcol"><i id="tip_{$this->setting['reginput']['password']}" class="p_tip">{lang register_password_tips}<!--{if $_G['setting']['pwlength']}-->, {lang register_password_length_tips1} $_G['setting']['pwlength'] {lang register_password_length_tips2}<!--{/if}--></i><kbd id="chk_{$this->setting['reginput']['password']}" class="p_chk"></kbd></td>
-									</tr>
-								</table>
-							</div>
-
-							<div class="rfm">
-								<table>
-									<tr>
-										<th><span class="rq">*</span><label for="{$this->setting['reginput']['password2']}">{lang password_confirm}:</label></th>
-										<td><input type="password" id="{$this->setting['reginput']['password2']}" name="" size="25" tabindex="1" value="" class="px" required /></td>
-										<td class="tipcol"><i id="tip_{$this->setting['reginput']['password2']}" class="p_tip">{lang register_repassword_tips}</i><kbd id="chk_{$this->setting['reginput']['password2']}" class="p_chk"></kbd></td>
-									</tr>
-								</table>
-							</div>
-
-							<div class="rfm">
-								<table>
-									<tr>
-										<th><!--{if !$_G['setting']['forgeemail']}--><span class="rq">*</span><!--{/if}--><label for="{$this->setting['reginput']['email']}">{lang email}:</label></th>
-										<td><input type="text" id="{$this->setting['reginput']['email']}" name="" autocomplete="off" size="25" tabindex="1" class="px" value="$hash[0]" {if !$_G['setting']['forgeemail']}required{/if} /><br /><em id="emailmore">&nbsp;</em></td>
-										<td class="tipcol"><i id="tip_{$this->setting['reginput']['email']}" class="p_tip">{lang register_email_tips}</i><kbd id="chk_{$this->setting['reginput']['email']}" class="p_chk"></kbd></td>
-									</tr>
-								</table>
-							</div>
+							</div> -->
 						<!--{/if}-->
 
 						<!--{if $_GET[action] == 'activation'}-->
@@ -207,6 +177,37 @@
 							</div>
 							<!--{/if}-->
 						<!--{/loop}-->
+						
+						<div class="rfm">
+							<table>
+								<tr>
+									<th>{if !$_G['setting']['forgeemail']}<span class="rq">*</span>{/if}<label for="{$this->setting['reginput']['email']}">{lang email}:</label></th>
+									<td><input type="text" id="{$this->setting['reginput']['email']}" name="" autocomplete="off" size="25" tabindex="1" class="px" value="$hash[0]" {if !$_G['setting']['forgeemail']}required{/if} /><br /><em id="emailmore">&nbsp;</em></td>
+									<td class="tipcol"><i id="tip_{$this->setting['reginput']['email']}" class="p_tip">{lang register_email_tips}</i><kbd id="chk_{$this->setting['reginput']['email']}" class="p_chk"></kbd></td>
+								</tr>
+							</table>
+						</div>
+						
+						<div class="rfm">
+							<table>
+								<tr>
+									<th><span class="rq">*</span><label for="{$this->setting['reginput']['password']}">{lang password}:</label></th>
+									<td><input type="password" id="{$this->setting['reginput']['password']}" name="" size="25" tabindex="1" class="px" required /></td>
+									<td class="tipcol"><i id="tip_{$this->setting['reginput']['password']}" class="p_tip">{lang register_password_tips}{if $_G['setting']['pwlength']}, {lang register_password_length_tips1} $_G['setting']['pwlength'] {lang register_password_length_tips2}{/if}</i><kbd id="chk_{$this->setting['reginput']['password']}" class="p_chk"></kbd></td>
+								</tr>
+							</table>
+						</div>
+							
+						<div class="rfm">
+							<table>
+								<tr>
+									<th><span class="rq">*</span><label for="{$this->setting['reginput']['password2']}">{lang password_confirm}:</label></th>
+									<td><input type="password" id="{$this->setting['reginput']['password2']}" name="" size="25" tabindex="1" value="" class="px" required /></td>
+									<td class="tipcol"><i id="tip_{$this->setting['reginput']['password2']}" class="p_tip">{lang register_repassword_tips}</i><kbd id="chk_{$this->setting['reginput']['password2']}" class="p_chk"></kbd></td>
+								</tr>
+							</table>
+						</div>
+
 					<!--{/if}-->
 					<!--{hook/register_input}-->
 

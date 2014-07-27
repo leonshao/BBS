@@ -96,7 +96,7 @@ class model_forum_thread extends discuz_model
 			return $this->showmessage('threadtype_expiration_invalid');
 		}
 
-		$author = !$this->param['isanonymous'] ? $this->member['username'] : '';
+		$author = !$this->param['isanonymous'] ? $this->member['realname'] : '';
 
 		$this->param['moderated'] = $this->param['digest'] || $this->param['displayorder'] > 0 ? 1 : 0;
 
@@ -185,7 +185,7 @@ class model_forum_thread extends discuz_model
 			'fid' => $this->forum['fid'],
 			'tid' => $this->tid,
 			'first' => '1',
-			'author' => $this->member['username'],
+			'author' => $this->member['realname'],
 			'authorid' => $this->member['uid'],
 			'subject' => $this->param['subject'],
 			'dateline' => $this->param['publishdate'],

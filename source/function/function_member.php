@@ -11,6 +11,44 @@ if(!defined('IN_DISCUZ')) {
 	exit('Access Denied');
 }
 
+/**
+ * 用真实姓名和手机登录
+ */
+function userlogin_realname($realname, $mobile, $loginfield = 'realname', $ip = '') {
+	$return = array();
+	if($loginfield == 'auto') {
+		$isuid = 3;
+	} else {
+		$isuid = 0;
+	}
+	
+	if(!function_exists('uc_user_login')) {
+		loaducenter();
+	}
+	
+	if($isuid == 3) {	// 自动登录
+		
+	} else {
+		// 查询用户验证信息
+		$return['ucresult'] = uc_user_login_realname(addslashes($realname), $mobile, $isuid, 1, $ip);
+	}
+	
+	$tmp = array();
+	$duplicate = '';
+	list($tmp['uid'], $tmp['realname'], $tmp['mobile']) = $return['ucresult'];
+	$return['ucresult'] = $tmp;
+	
+	$member = getuserbyuid($return['ucresult']['uid'], 1);
+	if(!$member || empty($member['uid'])) {
+		$return['status'] = -1;
+		return $return;
+	}
+	$return['member'] = $member;
+	$return['status'] = 1;
+	
+	return $return;
+}
+
 function userlogin($username, $password, $questionid, $answer, $loginfield = 'username', $ip = '') {
 	$return = array();
 
@@ -65,9 +103,27 @@ function userlogin($username, $password, $questionid, $answer, $loginfield = 'us
 	return $return;
 }
 
-function setloginstatus($member, $cookietime) {
+function member_profile_json($member) {
+	$callback = 'callback';
+	$result = 0;
+	
+	$data = array();
+	foreach ($member as $key => $value) {
+		switch ($key) {
+			case 'realname':
+				$data[$key] = urlencode($value);
+		}
+	}
+	
+	$arr = array('result' => $result, 'data' => $data);
+	echo urldecode($callback.'('.json_encode($arr).')');
+}
+
+
+function setloginstatus($realname, $member, $cookietime) {
 	global $_G;
 	$_G['uid'] = intval($member['uid']);
+	$_G['realname']= $realname;
 	$_G['username'] = $member['username'];
 	$_G['adminid'] = $member['adminid'];
 	$_G['groupid'] = $member['groupid'];

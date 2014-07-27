@@ -16,7 +16,8 @@ function build_cache_userstats() {
 	$totalmembers = C::t('common_member')->count();
 	$member = C::t('common_member')->range(0, 1, 'DESC');
 	$member = current($member);
-	$newsetuser = $member['username'];
+	$member = $member + C::t('common_member_profile')->fetch($member['uid']);
+	$newsetuser = $member['realname'];
 	$data = array('totalmembers' => $totalmembers, 'newsetuser' => $newsetuser);
 	if($_G['setting']['plugins']['func'][HOOKTYPE]['cacheuserstats']) {
 		$_G['userstatdata'] = & $data;

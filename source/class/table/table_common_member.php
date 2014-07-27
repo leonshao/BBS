@@ -269,11 +269,16 @@ class table_common_member extends discuz_table_archive
 		return false;
 	}
 
-	public function insert($uid, $username, $password, $email, $ip, $groupid, $extdata, $adminid = 0) {
+	public function insert($uid, $realname, $mobile, $college, $profession, $year, $username, $password, $email, $ip, $groupid, $extdata, $adminid = 0) {
 		if(($uid = dintval($uid))) {
 			$credits = isset($extdata['credits']) ? $extdata['credits'] : array();
 			$profile = isset($extdata['profile']) ? $extdata['profile'] : array();
 			$profile['uid'] = $uid;
+			$profile['realname'] = $realname;
+			$profile['mobile'] = $mobile;
+			$profile['field1'] = $college;
+			$profile['field2'] = $profession;
+			$profile['field3'] = $year;
 			$base = array(
 				'uid' => $uid,
 				'username' => (string)$username,

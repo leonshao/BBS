@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/default/forum/post_poll.htm', './template/default/common/upload.htm', 1404401994, '1', './data/template/1_1_forum_post_poll.tpl.php', './template/default', 'forum/post_poll')
+|| checktplrefresh('./template/default/forum/post_poll.htm', './template/default/common/upload.htm', 1405787009, '1', './data/template/1_1_forum_post_poll.tpl.php', './template/default', 'forum/post_poll')
 ;?>
 <input type="hidden" name="polls" value="yes" />
 <div class="exfm cl">
@@ -19,8 +19,7 @@
 <span id="polloption_new"></span>
 <p id="polloption_hidden" style="display: none">
 <a href="javascript:;" class="d" onclick="delpolloption(this)">del</a>
-<input type="text" name="polloption[]" class="px vm" autocomplete="off" style="width:240px;" tabindex="1" />
-<input type="text" name="optionremark[]" class="px vm" autocomplete="off" style="width:40px;" tabindex="1" />
+<input type="text" name="polloption[]" class="px vm" autocomplete="off" style="width:290px;" tabindex="1" />
 <span id="pollUploadProgress" class="vm" style="display: none;"></span>
 <span id="newpoll" class="vm"></span>
 </p>
@@ -52,8 +51,7 @@
 <p id="polloption_hidden" style="display: none">
 <a href="javascript:;" class="d" onclick="delpolloption(this)">del</a>
 <input type="text" name="displayorder[]" class="px pxs vm" autocomplete="off" tabindex="1" />
-<input type="text" name="polloption[]" class="px vm" autocomplete="off" style="width:190px;" tabindex="1" />
-<input type="text" name="optionremark[]" class="px vm" autocomplete="off" style="width:40px;" tabindex="1" />
+<input type="text" name="polloption[]" class="px vm" autocomplete="off" style="width:230px;" tabindex="1" />
 <span id="newpoll" class="vm"></span>
 <span id="pollUploadProgress" class="vm" style="display: none;"></span>
 </p>
