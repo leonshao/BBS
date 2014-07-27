@@ -989,7 +989,12 @@ if(empty($_GET['viewpid'])) {
 		$post['message'] = cutstr(strip_tags(preg_replace('/(<ignore_js_op>.*<\/ignore_js_op>)/is', '', $post['message'])), 200);
 		require_once libfile('thread/album', 'include');
 	}
-	include template('diy:forum/viewthread'.$sufix.':'.$_G['fid']);
+//	var_dump(template('index'));
+	if($_G['fid'] == 36){
+		include template('diy:forum/vote_viewthread'.$sufix.':'.$_G['fid']);
+	}else{
+		include template('diy:forum/viewthread'.$sufix.':'.$_G['fid']);
+	}
 } else {
 	$_G['setting']['admode'] = 0;
 	$post = $postlist[$_GET['viewpid']];

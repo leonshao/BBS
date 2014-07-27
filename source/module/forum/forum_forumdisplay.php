@@ -969,9 +969,16 @@ if(!empty($_G['forum']['threadsorts']['templatelist']) && $_G['forum']['status']
 	write_groupviewed($_G['fid']);
 	$template = 'diy:group/group:'.$_G['fid'];
 }
-
+//var_dump($template);
 if(!defined('IN_ARCHIVER')) {
-	include template($template);
+//	var_dump(template($template));
+	if($_GET['fid'] == 36){
+		$template = 'diy:forum/votedisplay:36';
+		include template($template);
+	}else{
+		include template($template);
+	}
+	
 } else {
 	include loadarchiver('forum/forumdisplay');
 }

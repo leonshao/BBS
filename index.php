@@ -113,6 +113,7 @@ if(!empty($_SERVER['QUERY_STRING']) && is_numeric($_SERVER['QUERY_STRING'])) {
 		}
 	}
 }
+var_dump('index');
 if(!empty($url)) {
 	$delimiter = strrpos($url, '?') ? '&' : '?';
 	if(isset($_GET['fromuid']) && $_GET['fromuid']) {

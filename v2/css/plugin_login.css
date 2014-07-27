@@ -1,0 +1,82 @@
+
+.plugin_login{
+	position: absolute;
+	width: 300px;
+	/* height: 344px; */
+	top: 40px;
+	right: 150px;
+	background: white;
+	z-index: 1000;
+	display: none;
+}
+.plugin_login .title{
+    margin: 10px;
+
+}
+
+.plugin_login .title span{
+    color: #b5b3b6;
+
+    font-size: 13px;
+}
+
+.plugin_login .close_{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+}
+.plugin_login button{
+
+}
+.plugin_login .input_data{
+	margin: 0px 40px;
+}
+.plugin_login .input_data input{
+    margin-top: 20px;
+	
+}
+.plugin_login .verify{
+    margin: 10px 40px 0;
+
+}
+.plugin_login .verify img{
+    width: 100px;
+
+    height: 30px;
+    background: whitesmoke;
+}
+.plugin_login .verify a{
+    font-size: 12px;
+    
+    color: gray;
+}
+.plugin_login .remeber_me_forget_secret{
+    margin: 5px 40px;
+
+    height: 20px;
+}
+.plugin_login .remeber_me_forget_secret a{
+    position: absolute;
+
+    right: 40px;
+}
+
+.plugin_login .login{
+    margin: 0 40px;
+
+    text-align: right;
+}
+
+.plugin_login .register{
+    margin: -20px 40px 0px;
+
+}
+
+.plugin_login .foot_{
+    height: 20px;
+
+    background: #eeeeee;
+    margin-top: 20px;
+}
+
+
