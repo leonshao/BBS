@@ -1,0 +1,149 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>广东工业大学</title>
+	<!-- <base href="http://i.com/github/BBS_demo/"> -->
+	<link rel="stylesheet" type="text/css" href="v2/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="v2/css/index.css">
+	<link rel="stylesheet" type="text/css" href="v2/css/plugin_login.css">
+</head>
+<body>
+
+<div class="container">
+	<div class="head">
+		<div class="logo">
+			<img src="v2/images/logo.png">
+		</div>
+		<div class="quick_enter">
+			<a href="javascript:void(0);">论坛</a>
+			<span>|</span>
+			<a href="javascript:void(0);" id="id_show_login" >登陆</a>
+			<span class="show_welcome" id="id_show_welcome">欢迎回来，maltoseli</span>
+		</div>
+		<!-- <div class="search">
+			<input type="text" id="id_search" class="form-control" placeholder="Search" />
+		</div> -->
+		<div class="bar">
+			<a href="javascript:void(0);" class="current">主页</a>
+			<a href="javascript:void(0);">校友会简介</a>
+			<a href="javascript:void(0);">校友风采</a>
+			<a href="javascript:void(0);">活动组织</a>
+			<a href="javascript:void(0);">校友通讯</a>
+			<a href="javascript:void(0);">决策评选</a>
+			<a href="javascript:void(0);">人才招聘</a>
+		</div>
+	</div>
+	
+	<div class="center">
+		<div class="box0">
+			<img src="v2/images/box0.png">
+			<div class="desc">
+				<span>最新新闻，普京将出席2014年巴西世界杯决赛</span>
+			</div>
+			<!-- <div class="pre_next">
+				<a class="pre" href="javascript:void(0);"></a>
+				<a class="next" href="javascript:void(0);"></a>
+			</div> -->
+		</div>
+
+		<div class="box1">
+			<img src="v2/images/box1.png">
+			<div>
+				<span class="num">01</span>
+				<span class="desc">校友风采</span>
+			</div>
+		</div>
+		<div class="box2">
+			<img src="v2/images/box2.png">
+			<div>
+				<span class="num">02</span>
+				<span class="desc">灌水论坛</span>
+			</div>
+		</div>
+		<div class="box3">
+			<img src="v2/images/box3.png">
+			<div>
+				<span class="num">03</span>
+				<span class="desc">决策评选</span>
+			</div>
+		</div>
+		<div class="box4">
+			<img src="v2/images/box4.png">
+			<div>
+				<span class="num">04</span>
+				<span class="desc">活动组织</span>
+			</div>
+		</div>
+		<div class="box5">
+			<img src="v2/images/box5.png">
+			<div>
+				<span class="num">05</span>
+				<span class="desc">人才招聘</span>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="foot">
+		<!-- <div class="adb">
+			<span>广告位</span>
+		</div>
+		<div class="some_link">
+			<a href="javascript:void(0);">企业推广</a>
+			<a href="javascript:void(0);">友情链接</a>
+		</div>
+		<div class="some_app">
+			<a href="javascript:void(0);"><img src="images/app0.png"></a>
+			<a href="javascript:void(0);"><img src="images/app1.png"></a>
+			<a href="javascript:void(0);"><img src="images/app2.png"></a>
+		</div> -->
+	</div>
+
+</div>
+
+<div class="plugin_login" id="id_plugin_login">
+	<div class="title">
+		<span>登陆</span>
+	</div>
+	<div class="close_">
+		<button type="button" class="close"><span aria-hidden="true">&times;</span></button>
+	</div>
+	<div class="input_data">
+		<input type="email" class="form-control" placeholder="用户名/邮箱" />
+		<input type="password" class="form-control" placeholder="密码" />
+		<input type="verify" class="form-control" placeholder="验证码" />
+	</div>
+	<div class="verify">
+		<img src="" alt="验证码">
+		<a href="javascript:void(0);">刷新</a>
+	</div>
+	<div class="remeber_me_forget_secret">
+		<!-- <input type="checkbox" id="container_login_remeber_me" /> -->
+		<!-- <label for="container_login_remeber_me">记住我</label> -->
+		<a href="javascript:void(0);">忘记密码?</a>
+	</div>
+	<div class="login">
+		<button type="button" class="btn btn-primary" >登陆</button>
+	</div>
+	<div class="register">
+		<a href="javascript:void(0);">&gt;去注册</a>
+	</div>
+	<div class="foot_"></div>
+	<div class="clearfix"></div>
+</div>
+
+<script type="text/javascript" src="v2/js/s.js"></script>
+<script type="text/javascript" src="v2/js/seajs_config.js"></script>
+<script type="text/javascript" src="v2/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="v2/js/common/logger.js"></script>
+<script type="text/javascript" src="v2/js/common/plugin_keyboard.js"></script>
+<script type="text/javascript" src="v2/js/common/plugin_login.js"></script>
+<script type="text/javascript" src="v2/js/common/plugin_mouse.js"></script>
+<script type="text/javascript" src="v2/js/index/index.js"></script>
+<script type="text/javascript">
+	seajs.use('js/index/index', function(Index){
+		Index.init();
+	});
+</script>
+</body>
+</html>

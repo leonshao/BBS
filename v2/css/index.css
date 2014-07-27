@@ -1,0 +1,356 @@
+
+
+body{
+	height: 100%;
+	width: 100%;
+	height: 798px;
+	position: relative;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
+
+.container{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	background-image: url("../images/background.jpg");
+	background-repeat: repeat;
+	background-position: top center;
+}
+
+.head{
+	height: 106px;
+	width: 100%;
+	position: relative;
+}
+.head .logo{
+	position: absolute;
+	left: 30px;
+	top: 18px;
+	height: 66px;
+	width: 178px;
+}
+
+.head .quick_enter{
+	position: absolute;
+	right: 22px;
+	top: 16px;
+	height: 30px;
+}
+
+.head .quick_enter a, .head .quick_enter span{
+	color:#7e7c81;
+}
+.head .quick_enter .show_welcome{
+	display: none;
+}
+
+.head .search{
+	position: absolute;
+	right: 22px;
+	top: 10px;
+	height: 31px;
+	width: 159px;
+}
+
+.head .search input{
+    height: 100%;
+	
+}
+
+.head .bar{
+	position: absolute;
+	right: 74px;
+	top: 62px;
+}
+.head .bar a{
+	margin-left: 26px;
+	color:#292928;
+}
+.head .bar a.current,.head .bar a:hover{
+	color: red;
+}
+
+.center{
+	background-color: black;
+	width: 1000px;
+	height: 601px;
+	margin: 0 auto;
+	position: relative;
+	z-index: 100;
+}
+.center>div{
+	position: absolute;
+}
+.center .box0{
+	width: 528px;
+	height: 100%;
+	left: 0px;
+	top:0px;
+	background-color: gray;
+}
+.center .box0 .desc{
+	position: absolute;
+	width: 100%;
+	bottom: 0px;
+	height: 55px;
+	background: rgba(0, 0, 0, 0.7);
+	text-align: center;
+}
+.center .box0 .desc span{
+	color: white;
+	line-height: 55px;
+	font-size: 18px;
+}
+.center .box0 .pre_next{
+	width: 0px;
+	height: 0px;
+	position: static;
+}
+.center .box0 .pre_next a{
+	position: absolute;
+	top: 281px;
+	display: block;
+	margin: 0 5px;
+	width: 57px;
+	height: 57px;
+	background-color: rgba(255,255,255,0.5);
+	border-radius: 50%;
+}
+.center .box0 .pre{
+	left: 0px;
+}
+.center .box0 .pre:before{
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-left: 0px solid black;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	border-right: 16px solid black;
+	margin: 12px 0 0 18px;
+}
+.center .box0 .next{
+	right: 0px;
+}
+.center .box0 .next:before{
+	content: "";
+	display: block;
+	width: 0px;
+	height: 0px;
+	border-left: 16px solid black;
+	border-top: 16px solid transparent;
+	border-bottom: 16px solid transparent;
+	border-right: 0px solid black;
+	margin: 12px 0px 0 23px;
+}
+.center .box0 .pre_next a:hover{
+	background: white
+}
+.center>div>div{
+	position: absolute;
+	width: 150px;
+	height: 150px;
+}
+.center>div>div>.num{
+	position: absolute;
+	font-size: 33px;
+	line-height: 58px;
+	text-align: center;
+    
+	height: 58px;
+    
+	width: 58px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+}
+.center>div:hover>div>.num{
+	background: rgba(255, 255, 255, 1);
+}
+.center>div>div>.desc{
+	position: absolute;
+	width: 100%;
+	font-size: 15px;
+	color: white;
+}
+.center .box1{
+	width: 304px;
+	height: 301px;
+	top:0px;
+	left: 537px;
+}
+.center .box1 div{
+    right: 0px;
+
+    bottom: 0px;
+    background: #d6731e;
+}
+.center .box1 div .num{
+    top: 7px;
+    left: 6px;
+}
+.center .box1 div .desc{
+    bottom: 0px;
+
+    padding: 0 0 4px 10px;
+}
+.center .box2{
+	width: 150px;
+	height: 301px;
+	top: 0px;
+	right: 0px;
+}
+.center .box2 img{
+	height: 50%;
+
+	position: absolute;
+	bottom: 0px;
+}
+.center .box2 div{
+    background: #215ab8;
+
+}
+.center .box2 div .num{
+    right: 10px;
+
+    bottom: 25px;
+}
+.center .box2 div .desc{
+    bottom: 0px;
+	
+    padding: 0 0 0px 81px;
+}
+.center .box3{
+	width: 304px;
+	height: 148px;
+	top: 312px;
+	right: 159px;
+}
+.center .box3 img{
+    width: 50%;
+
+}
+.center .box3 div{
+    top: 0px;
+
+    right: 0px;
+    background: #a9a099;
+}
+.center .box3 div .num{
+    bottom: 3px;
+
+    left: 5px;
+}
+.center .box3 div .desc{
+    top: 63px;
+	
+    padding: 0 0 0 79px;
+}
+.center .box4{
+	width: 304px;
+	height: 131px;
+	bottom: 0px;
+	right: 158px;
+}
+.center .box4 img{
+    width: 50%;
+
+    right: 0px;
+    position: absolute;
+}
+.center .box4 div{
+    background: #a7b425;
+
+    height: 100%;
+}
+.center .box4 div .num{
+    right: 2px;
+
+    top: 40px;
+}
+.center .box4 div .desc{
+    bottom: 0px;
+	
+    padding: 0 0 3px 2px;
+}
+.center .box5{
+	width: 150px;
+	height: 291px;
+	bottom:0px;
+	right: 0px;
+}
+.center .box5 img{
+    height: 52%;
+	
+}
+.center .box5 div{
+    background: #75a240;
+
+    height: 48%;
+}
+.center .box5 div .num{
+    top: 50px;
+
+    left: 8px;
+}
+.center .box5 div .desc{
+    padding: 9px 0 0 79px;
+	
+}
+.foot{
+	width: 100%;
+	height: 110px;
+	background-color: rgba(0,0,0,0.6);
+	position: absolute;
+	bottom: 0px;
+}
+
+.foot .adb{
+	position: absolute;
+	left: 42px;
+	bottom: 4px;
+	width: 535px;
+	height: 76px;
+}
+
+.foot .some_link{
+	position: absolute;
+	right: 234px;
+	bottom: 39px;
+}
+
+.foot .some_link a{
+	color: white;
+	margin-left: 80px;
+}
+
+.foot .some_app{
+	position: absolute;
+	right: 81px; 
+	bottom: 35px;
+	width: 120px;
+}
+
+.foot .some_app a{
+
+	height: 27px;
+	
+
+	width: 27px;
+	
+	
+
+	display: inline-block;
+
+	margin-right: 10px;
+
+}
+
+
+

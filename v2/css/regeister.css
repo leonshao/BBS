@@ -1,0 +1,301 @@
+body{
+	height: 100%;
+	width: 100%;
+	height: 798px;
+	position: relative;
+}
+
+img{
+	width: 100%;
+	height: 100%;
+}
+
+ul{
+    margin: 0px;
+
+    padding: 0px;
+}
+
+ul li{
+    list-style: none;
+	
+    font-size: 12px;
+    color: white;
+}
+
+.container{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	background-image: url("../images/background.jpg");
+	background-repeat: repeat;
+	background-position: top center;
+}
+
+.head{
+	height: 106px;
+	width: 100%;
+	position: relative;
+}
+.head .logo{
+	position: absolute;
+	left: 30px;
+	top: 18px;
+	height: 66px;
+	width: 178px;
+}
+
+.center{
+	width: 1000px;
+	height: 612px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.left{
+	width: 600px;
+	height: 100%;
+	background-image: url("../images/register_bg.jpg");
+	position: relative;
+}
+
+.right{
+	width: 400px;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background: white;
+	border: 1px solid gray;
+	border-left: 0px solid white;
+}
+.right .input{
+	margin: 50px 50px 0px;
+}
+.right .input input{
+    margin-top: 20px;
+}
+.right .input div{
+	position: relative;
+}
+.right .input div:before{
+	content: "*";
+	display: block;
+	position: absolute;
+	line-height: 34px;
+	left: -10px;
+	font-size: 20px;
+	color: red;
+}
+.right .verify{
+	margin: 20px 50px 0px;
+}
+.right .verify img{
+    width: 100px;
+
+    height: 25px;
+    background: red;
+}
+.right .verify span{
+
+}
+.right .verify input{
+    display: block;
+	
+    margin: 20px 0 0 0;
+}
+.right .register{
+	margin: 30px 50px;
+	text-align: right;
+}
+.right .register button{
+    width: 100%;
+	
+}
+
+
+
+
+
+
+
+.left>div{
+	position: absolute;
+	height: 20px;
+	background: blue;
+}
+.left>div>div{
+	position: relative;
+	display: block;
+	float: left;
+	width: 100%;
+}
+.left>div>div>a{
+	display: block;
+	color: white;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: center;
+}
+.left>div>div>span{
+	position: absolute;
+	top: 20px;
+	display: block;
+	height: 20px;
+	background: gray;
+	color: white;
+	font-size: 12px;
+	line-height: 20px;
+	z-index: 10;
+	width: 100%;
+}
+.left>div>div>ul{
+	position: absolute;
+	top: 20px;
+	display: block;
+	background: black;
+}
+
+.left .enducation{
+    top: 90px;
+
+    right: 506px;
+    width: 50px;
+    text-align: right;
+}
+.left .enducation a{
+    padding-right: 10px;
+
+}
+.left .enducation span{
+    display: block;
+
+    width: 50px;
+    padding-right: 10px;
+}
+.left .enducation ul{
+
+}
+
+.left .grade_academy_major{
+    top: 56px;
+	
+    left: 367px;
+}
+.left .grade_academy_major .grade{
+    width: 30px;
+	
+}
+.left .grade_academy_major .grade a{
+	
+}
+.left .grade_academy_major .grade span{
+    display: block;
+	
+}
+.left .grade_academy_major .grade ul{
+    display: block;
+	
+    background: black;
+}
+
+.left .grade_academy_major .academy{
+    width: 50px;
+	
+}
+.left .grade_academy_major .academy a{
+	
+}
+.left .grade_academy_major .academy span{
+    display: block;
+	
+}
+.left .grade_academy_major .academy ul{
+    /* display: block; */
+	
+    background: black;
+}
+
+
+.left .grade_academy_major .major{
+    width: 50px;
+	
+}
+.left .grade_academy_major .major a{
+	
+}
+.left .grade_academy_major .major span{
+	
+}
+.left .grade_academy_major .major ul{
+	
+    width: 100px;
+}
+
+.left .birthday{
+    top: 215px;
+
+    right: 445px;
+    width: 47px;
+}
+.left .birthday span{
+    width: 70px;
+
+}
+.left .birthday ul{
+	
+}
+
+.left .job{
+    top: 410px;
+
+    right: 531px;
+    width: 50px;
+}
+.left .job div{
+    width: 100%;
+	
+}
+.left .job ul{
+    width: 150px;
+	
+    height: 150px;
+}
+.left .job li{
+    width: 50px;
+	
+    float: left;
+    display: block;
+}
+
+.left .address{
+    top: 500px;
+
+    right: 100px;
+}
+.left .gender{
+    top: 337px;
+
+    right: 76px;
+    width: 103px;
+    background: none;
+}
+.left .gender div{
+	
+}
+.left .gender span{
+    background: blue;
+
+    width: 20px;
+    text-align: center;
+}
+.left .gender .man{
+    float: left;
+
+}
+.left .gender .women{
+    float: right;
+	
+}

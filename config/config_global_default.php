@@ -17,7 +17,7 @@ $_config = array();
  * @example
  * $_config['db']['1']['dbhost'] = 'localhost'; // 服务器地址
  * $_config['db']['1']['dbuser'] = 'root'; // 用户
- * $_config['db']['1']['dbpw'] = 'root';// 密码
+ * $_config['db']['1']['dbpw'] = '';// 密码
  * $_config['db']['1']['dbcharset'] = 'gbk';// 字符集
  * $_config['db']['1']['pconnect'] = '0';// 是否持续连接
  * $_config['db']['1']['dbname'] = 'x1';// 数据库
