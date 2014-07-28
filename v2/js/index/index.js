@@ -1,7 +1,6 @@
 define(function(require, exports, module) {
     var Login = require('js/common/plugin_login');
     var $ = require('jquery');
-    var cookie = require('jquery.cookie');
     var KeyBoard = require('js/common/plugin_keyboard');
     var Mouse = require('js/common/plugin_mouse');
     var Logger = require('js/common/logger');

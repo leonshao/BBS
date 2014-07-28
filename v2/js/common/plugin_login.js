@@ -116,15 +116,14 @@ define(function(require, exports, module) {
                 action: 'seccode',
                 inajax: '1'
             }, function(data) {
-
-                if (data.data_img && data.data_img.src && data.data_img.idHash) {
+                if (data.data_img && data.data_img.src && data.data_img.idhash) {
                     that.container.find('.verify img')[0].src = data.data_img.src;
-                    that.idHash = data.data_img.idHash;
+                    that.idHash = data.data_img.idhash;
                     return;
                 }
                 setTimeout(function() {
                     alert('拉去验证码失败，请刷新验证码');
-                });
+                }, 500);
             })
 
         }

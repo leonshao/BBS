@@ -13,6 +13,7 @@ define(function(require, exports, modules) {
             jsonpCallback: function() {
                 cb = window.callback;
                 window.callback = function(data) {
+                    Logger.log(data);
                     callback && callback(data);
                     window.callback = cb;
                 }
@@ -30,6 +31,7 @@ define(function(require, exports, modules) {
             jsonpCallback: function() {
                 cb = window.callback;
                 window.callback = function(data) {
+                    Logger.log(data);
                     callback && callback(data);
                     window.callback = cb;
                 }
