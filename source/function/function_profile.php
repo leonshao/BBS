@@ -5,6 +5,15 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: function_profile.php 33491 2013-06-24 07:13:17Z kamichen $
+ *      
+ *  Date: 2014-07-28
+    Author: leonshao
+    Description: 
+    +-------------------+-------------------------------------------------------+
+    | function          | update                                                |
+    +-------------------+-------------------------------------------------------+
+	| profile_setting   | remove select option 'gender_0' in register page      |
+	+-------------------+-------------------------------------------------------+
  */
 
 if(!defined('IN_DISCUZ')) {
@@ -103,7 +112,8 @@ function profile_setting($fieldid, $space=array(), $showstatus=false, $ignoreunc
 		if($field['unchangeable']) {
 			$html .= '<option value="">'.lang('space', 'gender').'</option>';
 		} else {
-			$html .= '<option value="0"'.($space[$fieldid]=='0' ? ' selected="selected"' : '').'>'.lang('space', 'gender_0').'</option>';
+			// 去掉保密选项
+			// $html .= '<option value="0"'.($space[$fieldid]=='0' ? ' selected="selected"' : '').'>'.lang('space', 'gender_0').'</option>';
 		}
 		$html .= '<option value="1"'.($space[$fieldid]=='1' ? ' selected="selected"' : '').'>'.lang('space', 'gender_1').'</option>'
 			.'<option value="2"'.($space[$fieldid]=='2' ? ' selected="selected"' : '').'>'.lang('space', 'gender_2').'</option>'

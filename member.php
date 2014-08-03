@@ -5,6 +5,10 @@
  *      This is NOT a freeware, use is subject to license terms
  *
  *      $Id: member.php 34254 2013-11-25 03:36:48Z nemohou $
+ *      
+ *  Date: 2014-07-30
+ *  Author: leonshao
+ *  Description: Add mod profile as CGI to get selection data and return by json format.
  */
 
 define('APPTYPEID', 0);

@@ -119,7 +119,6 @@ function member_profile_json($member) {
 	echo urldecode($callback.'('.json_encode($arr).')');
 }
 
-
 function setloginstatus($realname, $member, $cookietime) {
 	global $_G;
 	$_G['uid'] = intval($member['uid']);
