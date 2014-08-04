@@ -93,7 +93,6 @@ INSERT INTO pre_common_profession VALUES(20, '食品科学与工程', 3);
 INSERT INTO pre_common_profession VALUES(21, '制药工程', 3);
 INSERT INTO pre_common_profession VALUES(22, '生物工程(生物化工、微生物工程方向)', 3);
 INSERT INTO pre_common_profession VALUES(23, '信息工程（卓越工程师班）', 4);
-INSERT INTO pre_common_profession VALUES(24, '', 4);
 INSERT INTO pre_common_profession VALUES(25, '信息工程（电子信息工程方向）', 4);
 INSERT INTO pre_common_profession VALUES(26, '信息工程（应用电子技术方向）', 4);
 INSERT INTO pre_common_profession VALUES(27, '通信工程', 4);
