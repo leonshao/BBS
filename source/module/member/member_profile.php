@@ -109,18 +109,13 @@ function get_college_and_profession() {
 	$college_array = array();
 	$table_obj = C::t('common_profession');
 	foreach ($colleges as $college) {
-		$data['collegeid'] = $college['collegeid'];
 		$data['college'] = urlencode($college['collegename']);
 		
 		// 从学院id获取专业
 		$professions = $table_obj->fetch_by_collegeid($college['collegeid']);
 		$professions_array = array();
 		foreach ($professions as $profession) {
-			array_push($professions_array, 
-					   array(
-					   		'professionid' => $profession['professionid'],
-							'profession' => urlencode($profession['professionname']))
-					   );
+			array_push($professions_array, urlencode($profession['professionname']));
 		}
 		$data['professions'] = $professions_array;
 		array_push($college_array, $data);
