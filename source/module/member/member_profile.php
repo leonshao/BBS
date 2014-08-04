@@ -22,28 +22,6 @@ if(empty($_G['cache']['profilesetting'])) {
 	loadcache('profilesetting');
 }
 
-/* $all_fields = $_G['cache']['profilesetting'];
-foreach ($all_fields as $field) {
-	if($field['formtype']=='select' && $field['showinregister']) {
-		$choices = explode("\n", $field['choices']);
-		
-		// json_encode会输出\u编码, 需要urlencode转成中文输出
-		$choices_encoded = array();
-		foreach ($choices as $choice) {
-			array_push($choices_encoded, urlencode($choice));
-		}
-		
-		$field_data = array('title' => urlencode($field['title']), 
-							'choices' => $choices_encoded);
-		array_push($data, $field_data);
-	}
-}
-
-if(!count($data)) {
-	$result = 1;
-	$data = "没有学院, 专业等配置信息!";
-} */
-
 $data = get_return_data();
 echo urldecode($callback.'('.json_encode($data).')');
 
@@ -65,6 +43,11 @@ function get_return_data() {
 	}
 	
 	$college_data = get_college_and_profession();
+	if ($college_data === false) {
+		$return_data['result'] = -3;
+		$return_data['msg'] = urlencode("没有学院专业信息可供选择");
+		return $return_data;
+	}
 	
 	$return_data['result'] = 0;
 	$return_data['data'] = array('district_data' 	=> $district_data,
