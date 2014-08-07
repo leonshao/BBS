@@ -25,8 +25,8 @@ ALTER TABLE pre_ucenter_members ADD (
 -- Date: 2014-07-18
 -- Description: UC用户表pre_ucenter_members和pre_common_member中用户名字段username长度改为32,
 --
-ALTER TABLE `pre_ucenter_members` SET `username` char(32) NOT NULL DEFAULT '';
-ALTER TABLE `pre_common_member` SET `username` char(32) NOT NULL DEFAULT '';
+ALTER TABLE `pre_ucenter_members` MODIFY `username` char(32) NOT NULL DEFAULT '';
+ALTER TABLE `pre_common_member` MODIFY `username` char(32) NOT NULL DEFAULT '';
 
 --
 -- Author: leonshao
@@ -170,3 +170,14 @@ INSERT INTO pre_common_profession VALUES(98, '安全工程', 16);
 INSERT INTO pre_common_profession VALUES(99, '信息与计算科学（信息计算方向）', 17);
 INSERT INTO pre_common_profession VALUES(100, '信息与计算科学（信息安全方向）', 17);
 INSERT INTO pre_common_profession VALUES(101, '应用统计学', 17);
+
+
+--
+-- Author: leonshao
+-- Date: 2014-08-06
+-- Description: 用户详细资料表pre_common_member增加字段, 保存用户注册的输入
+-- 
+ALTER TABLE `pre_common_member_profile` ADD `college` varchar(128) NOT NULL DEFAULT '';
+ALTER TABLE `pre_common_member_profile` ADD `profession` varchar(128) NOT NULL DEFAULT '';
+ALTER TABLE `pre_common_member_profile` ADD `year` int unsigned NOT NULL DEFAULT 0;
+ALTER TABLE `pre_common_member_profile` ADD `studentno` varchar(64) NOT NULL DEFAULT '';
