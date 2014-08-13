@@ -15,9 +15,11 @@ define(function(require, exports, module) {
 
     Login.prototype = {
         init: function() {
+            var that = this;
             this.show();
             this.bind();
             this.loadVerifyImg();
+
         },
         bind: function() {
             var that = this;
@@ -91,6 +93,7 @@ define(function(require, exports, module) {
 
         },
         show: function() {
+            var that = this;
             this.container.fadeIn();
         },
         hide: function() {

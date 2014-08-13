@@ -2,21 +2,22 @@ define(function(require, exports, modules) {
     var $ = require('jquery');
     var Logger = require('js/common/logger');
 
+    var responseData = null;
+
+    window.callback = function(data) {
+        responseData = data;
+    }
 
     function get(url, data, callback) {
-        var cb;
         $.ajax({
             url: url,
             type: 'get',
             data: data,
+            jsonp: 'callback',
             dataType: 'jsonp',
-            jsonpCallback: function() {
-                cb = window.callback;
-                window.callback = function(data) {
-                    Logger.log(data);
-                    callback && callback(data);
-                    window.callback = cb;
-                }
+            complete: function() {
+                Logger.log(responseData);
+                callback && callback(responseData);
             }
         });
     }
@@ -27,14 +28,11 @@ define(function(require, exports, modules) {
             url: url,
             type: 'post',
             data: data,
+            jsonp: 'callback',
             dataType: 'jsonp',
-            jsonpCallback: function() {
-                cb = window.callback;
-                window.callback = function(data) {
-                    Logger.log(data);
-                    callback && callback(data);
-                    window.callback = cb;
-                }
+            complete: function() {
+                Logger.log(responseData);
+                callback && callback(responseData);
             }
         });
     }

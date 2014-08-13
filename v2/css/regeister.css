@@ -21,6 +21,7 @@ ul li{
 	
     font-size: 12px;
     color: white;
+    text-align: left;
 }
 
 .container{
@@ -96,7 +97,6 @@ ul li{
     width: 100px;
 
     height: 25px;
-    background: red;
 }
 .right .verify span{
 
@@ -105,7 +105,21 @@ ul li{
     display: block;
 	
     margin: 20px 0 0 0;
+    width: 100px;
 }
+.right .verify div{
+	position: relative;
+}
+.right .verify div:before{
+	content: "*";
+	display: block;
+	position: absolute;
+	line-height: 34px;
+	left: -10px;
+	font-size: 20px;
+	color: red;
+}
+
 .right .register{
 	margin: 30px 50px;
 	text-align: right;
@@ -124,7 +138,7 @@ ul li{
 .left>div{
 	position: absolute;
 	height: 20px;
-	background: blue;
+	background: #19c6b3;
 }
 .left>div>div{
 	position: relative;
@@ -137,12 +151,13 @@ ul li{
 	color: white;
 	font-size: 12px;
 	line-height: 20px;
-	text-align: center;
+	text-align: left;
+	margin-left: 10px;
 }
 .left>div>div>span{
 	position: absolute;
 	top: 20px;
-	display: block;
+	display: none;
 	height: 20px;
 	background: gray;
 	color: white;
@@ -154,8 +169,18 @@ ul li{
 .left>div>div>ul{
 	position: absolute;
 	top: 20px;
+	display: none;
+	background: #414d3f;
+	z-index: 10;
+	min-width: 100%;
+}
+.left>div>div>ul>li a{
+	color: #d4d9d3;	
+	width: 100%;
 	display: block;
-	background: black;
+}
+.left>div>div>ul>li a:hover{
+	color: white;
 }
 
 .left .enducation{
@@ -165,12 +190,11 @@ ul li{
     width: 50px;
     text-align: right;
 }
-.left .enducation a{
+.left .enducation>a{
     padding-right: 10px;
 
 }
 .left .enducation span{
-    display: block;
 
     width: 50px;
     padding-right: 10px;
@@ -185,20 +209,17 @@ ul li{
     left: 367px;
 }
 .left .grade_academy_major .grade{
-    width: 30px;
+    width: 40px;
 	
 }
 .left .grade_academy_major .grade a{
 	
 }
 .left .grade_academy_major .grade span{
-    display: block;
 	
 }
 .left .grade_academy_major .grade ul{
-    display: block;
 	
-    background: black;
 }
 
 .left .grade_academy_major .academy{
@@ -209,13 +230,11 @@ ul li{
 	
 }
 .left .grade_academy_major .academy span{
-    display: block;
 	
 }
 .left .grade_academy_major .academy ul{
-    /* display: block; */
+    width: 100px;
 	
-    background: black;
 }
 
 
@@ -243,6 +262,7 @@ ul li{
 .left .birthday span{
     width: 70px;
 
+    right: 0px;
 }
 .left .birthday ul{
 	
@@ -261,7 +281,6 @@ ul li{
 .left .job ul{
     width: 150px;
 	
-    height: 150px;
 }
 .left .job li{
     width: 50px;
@@ -271,9 +290,10 @@ ul li{
 }
 
 .left .address{
-    top: 500px;
+    top: 504px;
 
-    right: 100px;
+    right: 154px;
+    width: 50px;
 }
 .left .gender{
     top: 337px;
@@ -286,10 +306,19 @@ ul li{
 	
 }
 .left .gender span{
-    background: blue;
+    background: #19c6b3;
 
     width: 20px;
     text-align: center;
+}
+.left .gender a{
+	color: gray;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+.left .gender a.current,.left .gender a:hover{
+	color: white;
 }
 .left .gender .man{
     float: left;
@@ -299,3 +328,21 @@ ul li{
     float: right;
 	
 }
+
+.left .address div{
+
+}
+.left .address span{
+
+}
+.left .address ul{
+    width: 100px;
+	
+}
+.left .address ul li{
+    width: 50px;
+    float: left;
+    display: block;
+
+}
+
