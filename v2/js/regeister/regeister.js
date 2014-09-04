@@ -174,12 +174,16 @@ define(function(require, exports, module) {
             return;
         }
 
+        // ?
         var other = {
             xx: 'xx',
             xxx: 'xxx'
         };
 
-        var data = {};
+        var data = getPostLeftData();
+
+        Logger.log(data);
+
         Request.post('v2/fakedata/regeister', data, function() {
             alert('todo 注册成功');
         });
@@ -326,6 +330,29 @@ define(function(require, exports, module) {
             loadVerifyImg();
         });
 
+    }
+
+    function getPostLeftData(){
+        var data = {};
+        data.realname = 'liyatang';
+        data.gender = 1;// 1 男 2  女
+        data.mobile = '15017561455';
+        data.residecity = '深圳';
+        data.residedist = '南山区';
+        data.education = '本科';
+        data.company = ''; // ?
+        data.occupation = '程序员';
+        data.college = '计算机';
+        data.profession = '计算机科学与技术';
+        data.year = ''; // ?
+        data.studentno = ''; // ?
+        data.email = 'liyatang@qq.com';
+        data.password = '070190';
+        data.password2 = '070190';
+        data.seccodeverify = 'SE6D';
+        data.seccodemodid = 'xxxx';
+
+        return data;
     }
 
 

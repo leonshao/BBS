@@ -22,6 +22,7 @@ define(function(require, exports, module) {
     function init() {
 
         var showLogin = $('#id_show_login');
+        var showRegeister = $('#id_show_regeister');
         var showName = $('#id_show_welcome');
 
         var mouse = Mouse.getInstance(showLogin[0]);
@@ -31,6 +32,7 @@ define(function(require, exports, module) {
                 alert('登陆成功');
                 login.hide();
                 showLogin.hide();
+                showRegeister.hide();
                 showName.show();
             });
             login.error(function() {
@@ -39,6 +41,9 @@ define(function(require, exports, module) {
             })
             login.init();
         });
+
+        // var mouse2 = Mouse.getInstance(showRegeister[0]);
+        
 
     }
 
